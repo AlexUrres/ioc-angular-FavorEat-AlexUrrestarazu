@@ -6,8 +6,12 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'ioc-angular-FavorEat-AlexUrrestarazu';
+
+  constructor() {
+    console.log("FavorEat: Endevant, els teus restaurants favorits t'esperen!");
+  }
 }
