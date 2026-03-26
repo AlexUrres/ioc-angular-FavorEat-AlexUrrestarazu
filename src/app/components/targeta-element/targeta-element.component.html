@@ -1,0 +1,12 @@
+<div class="card">
+    <h3 class="card-title">{{ restaurant.nom }}</h3>
+    
+    <div class="card-details">
+        <p><strong>Ubicació</strong><br>{{ restaurant.poblacio }}</p>
+        <p><strong>Cuina</strong><br>{{ restaurant.tipusCuina }}</p>
+        <p><strong>Preu Mitjà</strong><br>{{ restaurant.preuMitja | number:'1.2-2' }}€</p>
+        
+        <span *ngIf="restaurant.menuTancat" class="status-closed">Tancat ara</span>
+        <span *ngIf="!restaurant.menuTancat" class="status-open">Obert ara</span>
+    </div>
+</div>

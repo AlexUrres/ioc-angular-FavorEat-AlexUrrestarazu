@@ -1,0 +1,12 @@
+<app-barra-cerca (cercadorEvent)="filtrarRestaurants($event)"></app-barra-cerca>
+
+<div class="llista-container">
+  <app-targeta-element 
+    *ngFor="let r of llistaFiltrada; trackBy: trackById" 
+    [restaurant]="r">
+  </app-targeta-element>
+</div>
+
+<div *ngIf="llistaFiltrada.length === 0" class="no-results">
+  <p>No s'ha trobat cap restaurant amb aquest nom. Prova-ho de nou!</p>
+</div>
