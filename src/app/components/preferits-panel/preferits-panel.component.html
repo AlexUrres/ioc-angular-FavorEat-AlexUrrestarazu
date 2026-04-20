@@ -1,0 +1,74 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Les meves Notes</h2>
+    <a routerLink="/cataleg" class="btn btn-outline-secondary"
+      >Tornar al catàleg</a
+    >
+  </div>
+
+  <div
+    *ngIf="preferitsService.preferits().length === 0"
+    class="alert alert-info"
+  >
+    No tens cap restaurant preferit seleccionat.
+  </div>
+
+  <div
+    *ngFor="let p of preferitsService.preferits()"
+    class="card mb-4 shadow-sm border-0"
+    style="border-radius: 20px; overflow: hidden"
+  >
+    <div class="row g-0">
+      <div class="col-md-3">
+        <img
+          [src]="p.imatgeUrl"
+          [alt]="p.titol"
+          class="img-fluid h-100"
+          style="object-fit: cover"
+        />
+      </div>
+      <div class="col-md-9 p-4">
+        <h4 class="text-primary fw-bold">{{ p.titol }}</h4>
+        <p class="text-muted small">{{ p.categoria }}</p>
+
+        <form [formGroup]="formularis[p.id]">
+          <div formArrayName="notes">
+            <div
+              *ngFor="let nota of getNotes(p.id).controls; let i = index"
+              class="mb-3"
+            >
+              <div class="input-group">
+                <input
+                  [formControlName]="i"
+                  (input)="guardar(p.id)"
+                  class="form-control"
+                  placeholder="Escriu una nota sobre aquest lloc..."
+                />
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="eliminarNota(p.id, i)"
+                >
+                  x
+                </button>
+              </div>
+              <div
+                *ngIf="nota.invalid && nota.touched"
+                class="text-danger small mt-1 fw-bold"
+              >
+                Mínim 3 caràcters obligatoris.
+              </div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-success btn-sm px-4 rounded-pill"
+            (click)="afegirNota(p.id)"
+          >
+            + Afegir nova nota
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { LlistaElementsComponent } from './components/llista-elements/llista-elements.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [LlistaElementsComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'ioc-angular-FavorEat-AlexUrrestarazu';

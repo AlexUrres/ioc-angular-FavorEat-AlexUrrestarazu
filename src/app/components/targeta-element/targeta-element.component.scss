@@ -1,14 +1,12 @@
 .card {
-  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
   background-color: #ffffff;
   border: 2px solid #e2e8f0;
   border-radius: 24px;
   padding: 28px;
   display: flex;
   flex-direction: column;
-  
-  box-shadow: 0 15px 35px rgba(0, 40, 100, 0.15); 
-  
+  box-shadow: 0 15px 35px rgba(0, 40, 100, 0.15);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   height: 100%;
@@ -19,6 +17,41 @@
     transform: translateY(-12px);
     box-shadow: 0 30px 60px rgba(0, 86, 179, 0.25);
     border-color: #0056b3;
+  }
+
+  .fav-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &.is-fav {
+      background: #fff;
+    }
+  }
+
+  .card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 20px;
   }
 
   .card-title {
@@ -38,7 +71,7 @@
       color: #2d3748;
       font-size: 1.05rem;
       font-weight: 500;
-      
+
       strong {
         color: #0056b3;
         font-weight: 700;

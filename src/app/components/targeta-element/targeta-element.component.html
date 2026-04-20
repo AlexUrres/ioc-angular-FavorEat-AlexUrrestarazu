@@ -1,12 +1,20 @@
 <div class="card">
-    <h3 class="card-title">{{ restaurant.nom }}</h3>
-    
+  <button class="fav-btn" (click)="togglePreferit()" [class.is-fav]="esFavorit">
+    {{ esFavorit ? "❤️" : "🤍" }}
+  </button>
+
+  <img [src]="restaurant.imatgeUrl" [alt]="restaurant.titol" class="card-img" />
+
+  <div class="card-body">
+    <h5 class="card-title">{{ restaurant.titol }}</h5>
+
     <div class="card-details">
-        <p><strong>Ubicació</strong><br>{{ restaurant.poblacio }}</p>
-        <p><strong>Cuina</strong><br>{{ restaurant.tipusCuina }}</p>
-        <p><strong>Preu Mitjà</strong><br>{{ restaurant.preuMitja | number:'1.2-2' }}€</p>
-        
-        <span *ngIf="restaurant.menuTancat" class="status-closed">Tancat ara</span>
-        <span *ngIf="!restaurant.menuTancat" class="status-open">Obert ara</span>
+      <p>{{ restaurant.descripcio }}</p>
+      <p><strong>Categoria:</strong> {{ restaurant.categoria }}</p>
+      <p><strong>Preu:</strong> {{ restaurant.preu }}€</p>
+      <p><strong>Unitats:</strong> {{ restaurant.unitats }}</p>
     </div>
+
+    <div *ngIf="restaurant.esPopular" class="status-open">Popular</div>
+  </div>
 </div>

@@ -1,14 +1,29 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {Element } from '../../models/element.model'; // Importem el model
+import { ElementCataleg } from '../../models/element.model';
+import { PreferitsService } from '../../services/preferits.service';
 
 @Component({
   selector: 'app-targeta-element',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './targeta-element.component.html',
-  styleUrl: './targeta-element.component.scss'
+  styleUrl: './targeta-element.component.scss',
 })
 export class TargetaElementComponent {
-  @Input() restaurant!: Element; //Definim el @Input
+  @Input() restaurant!: ElementCataleg;
+
+  private preferitsService = inject(PreferitsService);
+
+  get esFavorit(): boolean {
+    return this.preferitsService.esPreferit(this.restaurant.id);
+  }
+
+  togglePreferit(): void {
+    if (this.esFavorit) {
+      this.preferitsService.eliminarPreferit(this.restaurant.id);
+    } else {
+      this.preferitsService.afegirPreferit(this.restaurant);
+    }
+  }
 }

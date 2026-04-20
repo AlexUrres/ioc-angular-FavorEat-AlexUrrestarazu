@@ -1,0 +1,55 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-10 text-center">
+      <h2 class="mb-4">Catàleg de Restaurants</h2>
+
+      <div class="mb-4">
+        <a
+          routerLink="/preferits"
+          class="badge rounded-pill bg-danger py-2 px-3 shadow-sm text-decoration-none"
+          style="cursor: pointer"
+        >
+          ❤️ {{ totalPreferits() }} Preferits seleccionats (Gestionar notes)
+        </a>
+      </div>
+
+      <div class="d-flex justify-content-center mb-5">
+        <div style="width: 100%; max-width: 500px">
+          <app-formulari-cerca></app-formulari-cerca>
+        </div>
+      </div>
+
+      <div *ngIf="carregant()" class="py-5">
+        <div
+          class="spinner-border text-primary"
+          role="status"
+          style="width: 3rem; height: 3rem"
+        >
+          <span class="visually-hidden">Carregant...</span>
+        </div>
+        <p class="mt-2 text-primary fw-bold">Buscant els millors plats...</p>
+      </div>
+
+      <div
+        *ngIf="error() && !carregant()"
+        class="alert alert-danger shadow-sm py-4"
+      >
+        <h4 class="alert-heading">Vaja! S'ha produït un error</h4>
+        <p>{{ error() }}</p>
+        <hr />
+        <button class="btn btn-danger px-4" (click)="reintentar()">
+          Torna-ho a intentar
+        </button>
+      </div>
+
+      <div
+        *ngIf="!carregant() && !error()"
+        class="row row-cols-1 row-cols-md-2 g-4 justify-content-center"
+      >
+        <div class="col" *ngFor="let item of elements()">
+          <app-targeta-element [restaurant]="item"></app-targeta-element>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

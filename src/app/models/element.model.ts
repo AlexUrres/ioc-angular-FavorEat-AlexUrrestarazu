@@ -1,8 +1,22 @@
-export interface Element {
-    id: number; // Identificador obligatori
-    nom: string; // Nom del restaurant
-    poblacio: string; // Ubicació
-    preuMitja: number; // Valor numéric
-    tipusCuina: string; // Característica del restaurant
-    menuTancat?: boolean; // Propietat opcional
+export interface ElementApiResponse {
+  id: string;
+  nom: string;
+  descripcio: string;
+  categoria: string;
+  preu: number;
+  imatge: string;
+  popular: boolean;
+  stock: number;
+}
+
+export interface ElementCataleg {
+  id: string;
+  titol: string;
+  descripcio: string;
+  categoria: string;
+  preu: number;
+  imatgeUrl: string;
+  esPopular: boolean;
+  unitats: number;
+  notes?: string[];
 }

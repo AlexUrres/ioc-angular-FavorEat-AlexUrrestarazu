@@ -1,0 +1,49 @@
+<form [formGroup]="formulari">
+  <div class="row g-3 align-items-center justify-content-center">
+    <div class="col-auto position-relative">
+      <label for="termeCerca" class="form-label visually-hidden">Cerca</label>
+      <input
+        id="termeCerca"
+        type="text"
+        formControlName="termeCerca"
+        class="form-control"
+        placeholder="Cerca el teu restaurant..."
+      />
+
+      @if (validantAsync) {
+        <div class="text-muted small mt-1">
+          <span class="spinner-border spinner-border-sm" role="status"></span>
+          Validant...
+        </div>
+      }
+    </div>
+
+    @if (tc?.value) {
+      <div class="col-auto">
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          (click)="netejar()"
+        >
+          Netejar
+        </button>
+      </div>
+    }
+  </div>
+
+  <div class="mt-2">
+    @if (tc?.invalid && (tc?.touched || tc?.dirty)) {
+      <div class="text-danger small">
+        @if (tc?.errors?.["minlength"]) {
+          <div>Cal introduir un mínim de 2 caràcters.</div>
+        }
+        @if (tc?.errors?.["maxlength"]) {
+          <div>El text és massa llarg (màxim 50).</div>
+        }
+        @if (tc?.errors?.["sensResultats"]) {
+          <div>No s'ha trobat cap restaurant amb aquest nom.</div>
+        }
+      </div>
+    }
+  </div>
+</form>
