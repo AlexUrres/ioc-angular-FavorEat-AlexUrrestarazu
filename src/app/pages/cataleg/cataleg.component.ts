@@ -5,12 +5,14 @@ import { ElementService } from '../../services/element.service';
 import { PreferitsService } from '../../services/preferits.service';
 import { TargetaElementComponent } from '../../components/targeta-element/targeta-element.component';
 import { FormulariCercaComponent } from '../../components/formulari-cerca/formulari-cerca.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'app-cataleg',
   standalone: true,
   imports: [
     CommonModule,
+    ScrollingModule,
     TargetaElementComponent,
     FormulariCercaComponent,
     RouterModule,

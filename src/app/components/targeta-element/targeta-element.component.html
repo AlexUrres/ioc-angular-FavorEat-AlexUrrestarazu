@@ -3,10 +3,20 @@
     {{ esFavorit ? "❤️" : "🤍" }}
   </button>
 
-  <img [src]="restaurant.imatgeUrl" [alt]="restaurant.titol" class="card-img" />
+  <img 
+    [src]="restaurant.imatgeUrl" 
+    [alt]="restaurant.titol" 
+    class="card-img" 
+    [routerLink]="['/detall', restaurant.id]" 
+    style="cursor: pointer" />
 
   <div class="card-body">
-    <h5 class="card-title">{{ restaurant.titol }}</h5>
+    <h5 
+      class="card-title" 
+      [routerLink]="['/detall', restaurant.id]" 
+      style="cursor: pointer">
+      {{ restaurant.titol }}
+    </h5>
 
     <div class="card-details">
       <p>{{ restaurant.descripcio }}</p>

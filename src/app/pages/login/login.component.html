@@ -1,0 +1,23 @@
+<div style="max-width: 400px; margin: 40px auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 10px; font-family: sans-serif;">
+  <h2 style="text-align: center; color: #0056b3;">Iniciar Sessió</h2>
+  
+  <form (ngSubmit)="onSubmit()">
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; margin-bottom: 5px;">Email:</label>
+      <input type="email" name="email" [(ngModel)]="email" style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #cbd5e0;">
+    </div>
+    
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; margin-bottom: 5px;">Contrasenya:</label>
+      <input type="password" name="password" [(ngModel)]="password" style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #cbd5e0;">
+    </div>
+
+    <div *ngIf="errorLogin" style="background-color: #fed7d7; color: #c53030; padding: 10px; border-radius: 5px; margin-bottom: 15px; text-align: center;">
+      Credencials incorrectes. Torna-ho a intentar.
+    </div>
+
+    <button type="submit" style="width: 100%; padding: 10px; background-color: #0056b3; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Entrar
+    </button>
+  </form>
+</div>

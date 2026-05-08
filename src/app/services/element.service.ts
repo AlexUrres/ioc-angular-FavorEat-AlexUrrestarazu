@@ -2,7 +2,8 @@ import { Injectable, signal, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { ElementCataleg, ElementApiResponse } from '../models/element.model';
-import { adaptarElementsApi } from '../adaptadors/element.adaptador';
+import { Observable, map } from 'rxjs';
+import { adaptarElementApi, adaptarElementsApi } from '../adaptadors/element.adaptador';
 
 @Injectable({
   providedIn: 'root',
@@ -55,5 +56,10 @@ export class ElementService {
           this._carregant.set(false);
         },
       });
+  }
+  obtenirPerId(id:String){
+    return this.http.get<ElementApiResponse>(`${this.apiUrl}/elements/${id}`).pipe(
+    map(data => adaptarElementApi(data))
+    );
   }
 }

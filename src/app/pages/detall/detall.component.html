@@ -1,0 +1,11 @@
+<div *ngIf="element" style="padding: 40px; text-align: center; font-family: sans-serif;">
+  <h2 style="color: #0056b3; font-size: 2.5rem;">{{ element.titol }}</h2>
+  <img [src]="element.imatgeUrl" [alt]="element.titol" style="width: 100%; max-width: 600px; border-radius: 15px; margin: 20px 0; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+  
+  <div style="max-width: 600px; margin: 0 auto; text-align: left; line-height: 1.6;">
+    <p><strong>Descripció:</strong> {{ element.descripcio }}</p>
+    <p><strong>Categoria:</strong> {{ element.categoria }}</p>
+    <p><strong>Preu mitjà:</strong> {{ element.preu }}€</p>
+    <p style="color: #718096; font-size: 0.9rem;">ID del recurs: {{ element.id }}</p>
+  </div>
+</div>

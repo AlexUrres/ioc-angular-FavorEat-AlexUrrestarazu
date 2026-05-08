@@ -1,27 +1,50 @@
-# IocAngularFavorEatAlexUrrestarazu
+# FavorEat - Projecte de Gestió Gastronòmica
+**Autor:** Alex Urrestarazu  
+**Curs:** EAC Final - Desenvolupament en Frameworks JavaScript (Angular)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
+## Descripció del projecte
+FavorEat és una aplicació web desenvolupada amb Angular 18 que permet als usuaris explorar un catàleg de restaurants, cercar per categories i gestionar una llista personalitzada de preferits amb anotacions privades.
 
-## Development server
+## Mapa de Rutes
+L'aplicació utilitza la tècnica de Lazy Loading per optimitzar la càrrega inicial de cada mòdul de l'aplicació.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+| Ruta | Component | Tipus d'Accés |
+| :--- | :--- | :--- |
+| `/cataleg` | CatalegComponent | Públic |
+| `/cerca` | CercaComponent | Públic |
+| `/detall/:id` | DetallComponent | Públic |
+| `/login` | LoginComponent | Públic |
+| `/preferits` | PreferitsPanelComponent | Privat (Protegit amb AuthGuard) |
 
-## Code scaffolding
+## Instruccions d'execució en local
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. **Instal·lació de dependències:**
+   ```bash
+   npm install
+2. **Servidor de dades (API Mock):**
+   L'aplicació requereix `json-server` per gestionar el fitxer `db.json`:
+   ```bash
+   npx json-server --watch db.json
+3. **Execució de l'aplicació en desenvolupament:**
+   ```bash
+   ng serve
 
-## Build
+L'aplicació estarà disponible a: http://localhost:4200
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Build de Producció i Optimització
+El projecte ha estat optimitzat per a un rendiment d'alta eficiència, complint amb els requisits d'estabilitat i velocitat:
 
-## Running unit tests
+* **Build de producció:** Generat amb el comandament `ng build --configuration production`.
+* **Mida Initial Chunk:** 305.10 kB.
+* **Mida Transferida (estimada):** 85.37 kB.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Tècniques d'optimització aplicades:
+* **Lazy Loading:** Implementat en totes les rutes principals.
+* **OnPush Strategy:** Ús de `ChangeDetectionStrategy.OnPush` en components presentacionals.
+* **Virtual Scrolling:** Ús d'Angular CDK en el catàleg principal per garantir la fluïdesa.
 
-## Running end-to-end tests
+## Credencials de prova (Accés Privat)
+Per provar les funcionalitats de la secció de Preferits i el sistema d'autenticació:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+* **Email:** `admin@test.com`
+* **Contrasenya:** `1234`

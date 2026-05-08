@@ -1,0 +1,18 @@
+<nav class="navbar-container">
+  <div class="nav-links">
+    <a routerLink="/cataleg" routerLinkActive="active">Catàleg</a>
+    <a routerLink="/cerca" routerLinkActive="active">Cerca</a>
+    <a routerLink="/preferits" routerLinkActive="active">Preferits</a>
+    
+    <ng-container *ngIf="(authService.obtenirUsuari() | async) as usuari; else convidat">
+      <div class="user-section">
+        <span class="user-name">Hola, <strong>{{ usuari.nom }}</strong></span>
+        <button (click)="logout()" class="btn-logout">Tancar sessió</button>
+      </div>
+    </ng-container>
+
+    <ng-template #convidat>
+      <a routerLink="/login" routerLinkActive="active">Login</a>
+    </ng-template>
+  </div>
+</nav>
